@@ -2,6 +2,9 @@
 
 jurishand  - ch1 (database)
 
+CI pipeline status:
+
+![example workflow](https://github.com/vitorandrietta/jurishand-ch1-database-/actions/workflows/ci-checks.yaml/badge.svg)
 
 ### Running tests
 
