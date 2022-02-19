@@ -1,0 +1,10 @@
+CREATE EXTENSION pgcrypto;
+
+CREATE OR REPLACE PROCEDURE INS_USER (NOME varchar(50), EMAIL varchar(60), PASSWORD varchar(200))
+LANGUAGE plpgsql  AS  
+$$  
+BEGIN  
+	INSERT INTO BASE_USER(NOME, EMAIL, PASSWORD)
+    VALUES (NOME, EMAIL, crypt(PASSWORD, gen_salt('bf')));
+END  
+$$;
