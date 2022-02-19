@@ -1,0 +1,25 @@
+name: Test
+on:
+  pull_request:
+jobs:
+  test:
+    name: Run test suite
+    runs-on: ubuntu-latest
+    strategy:
+      node-version: [16.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: start docker
+        run: docker-compose up  -d
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn test
